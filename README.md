@@ -1,53 +1,79 @@
-# pharmaceutical-prescription-analytics
-End-to-end Pharmaceutical Prescription Analytics Dashboard using Python, SQL, SQLite, and Power BI.
 # 💊 Pharmaceutical Prescription Analytics Dashboard
 
-An end-to-end Business Intelligence project that analyzes pharmaceutical prescription data to uncover prescribing trends, healthcare spending patterns, prescriber performance, and opioid utilization across the United States.
+> An end-to-end healthcare analytics project analyzing **CMS Medicare Part D prescription data** to uncover prescription spending patterns, generic drug utilization, and opioid prescribing trends across the United States.
 
-This project demonstrates a complete analytics workflow using **DuckDB**, **Python**, **SQL**, **SQLite**, and **Power BI**, transforming raw prescription data into an interactive business intelligence solution that supports data-driven healthcare decision-making.
+**Tools Used:** DuckDB • Pandas • SQL • SQLite • Power BI
 
 ---
 
 # 📌 Project Overview
 
-Healthcare organizations generate millions of prescription records every year. Extracting meaningful insights from this data is essential for understanding healthcare expenditure, monitoring prescribing behavior, identifying high-cost specialties, and supporting evidence-based decision-making.
+Healthcare organizations generate billions of prescription claims annually, making it difficult to identify spending patterns and prescribing behaviors through raw data alone.
 
-This project builds a complete pharmaceutical analytics solution by processing raw prescription data through DuckDB and SQLite, performing SQL-based analysis, and developing an interactive Power BI dashboard for business users.
+This project transforms CMS Medicare Part D prescription data into an interactive business intelligence solution using **DuckDB, Pandas, SQL, SQLite, and Power BI**. The analysis focuses on three key business objectives:
 
----
+- Identify where Medicare prescription spending is concentrated.
+- Evaluate generic drug utilization across specialties and states.
+- Analyze opioid prescribing patterns using rate-based comparisons.
 
-# 🎯 Business Objectives
-
-The primary objectives of this project are to:
-
-- Analyze nationwide prescription claims and healthcare spending.
-- Identify high-cost medical specialties and prescribers.
-- Examine opioid prescribing trends across different states.
-- Compare opioid and antibiotic prescription activity.
-- Build an interactive executive dashboard for business stakeholders.
-- Generate actionable business insights to support healthcare decision-making.
+The project demonstrates a complete analytics workflow, covering data extraction, cleaning, database design, SQL analysis, and interactive dashboard development.
 
 ---
 
-# 🎯 Project Highlights
+# 🔄 Project Workflow
 
-- Built an end-to-end pharmaceutical prescription analytics solution using DuckDB, Python, SQL, SQLite, and Power BI.
-- Processed and analyzed over 300,000 prescriber records from the CMS Medicare Part D dataset.
-- Designed a relational database to support efficient analytical querying.
-- Developed interactive dashboards for executive reporting, prescriber performance, and opioid analysis.
-- Generated actionable business insights to support data-driven healthcare decision-making.
+```text
+┌─────────────────────────────────────────────┐
+│ Raw CMS Medicare Part D Dataset (.csv)      │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ DuckDB Extraction & Filtering               │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ Pandas Data Cleaning & Feature Engineering  │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ Cleaned Analytical Dataset                  │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ SQLite Star Schema                          │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ SQL Business Analysis                       │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ Power BI Dashboard                          │
+└─────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────┐
+│ Business Insights & Recommendations         │
+└─────────────────────────────────────────────┘
+```
 
 ---
 
 # 🛠 Technology Stack
 
-| Technology | Role in Project |
-|------------|----------|
+| Technology | Purpose |
+|------------|---------|
 | DuckDB | Data Extraction & Filtering |
-| Python | Data Cleaning & Preprocessing |
-| SQL | Data Analysis |
-| SQLite | Database Management |
-| Power BI | Dashboard Development & Visualization |
+| Pandas | Data Cleaning & Feature Engineering |
+| SQL | Business Analysis |
+| SQLite | Data Storage |
+| Power BI | Interactive Dashboard |
 | Git & GitHub | Version Control |
 
 ---
@@ -56,229 +82,190 @@ The primary objectives of this project are to:
 
 **Source:** CMS Medicare Part D Prescriber Public Use File
 
-The dataset contains aggregated prescriber-level information and does not include personally identifiable patient information, making it suitable for analytical and educational purposes.
-
-The dataset contains aggregated prescription information for healthcare providers across the United States, including:
+The dataset contains provider-level prescription information across the United States, including:
 
 - Prescriber Information
 - Geographic Information
 - Prescription Claims
 - Drug Spending
 - Beneficiary Statistics
-- Opioid Metrics
-- Antibiotic Metrics
+- Generic Drug Metrics
+- Opioid & Antibiotic Metrics
 
-Due to file size limitations, the raw and cleaned dataset files are not included in this repository. Refer to the Data Preparation & ETL Process section below for details on how the dataset was sourced and processed.
+### Dataset Scale
 
----
+- **349,081** provider records
+- **118** medical specialties
+- **59** states and territories
+- **~1.48 Billion** prescription claims
+- **$233.9 Billion** prescription spending
 
-# 🔄 Data Preparation & ETL Process
-
-The original **CMS Medicare Part D Prescriber Public Use File** contains a large number of attributes and records. To build an efficient analytics pipeline, an Extract, Transform, Load (ETL) process was implemented before database design and dashboard development.
-
-### 1. Data Extraction & Filtering (DuckDB)
-- Imported the raw CMS prescription dataset into DuckDB for high-performance data processing.
-- Selected only the business-relevant attributes required for analysis.
-- Removed unnecessary columns to reduce dataset size and improve processing efficiency.
-- Exported a filtered dataset for downstream preprocessing.
-
-### 2. Data Cleaning & Transformation (Python)
-- Loaded the filtered dataset into Python using Pandas.
-- Performed exploratory data analysis to understand data quality and structure.
-- Identified and handled missing values using appropriate techniques.
-- Validated data types and prepared the dataset for analytical querying.
-- Prepared a clean analytical dataset for database loading.
-
-### 3. Database Design (SQLite)
-- Imported the cleaned dataset into SQLite.
-- Created a structured analytical database to support SQL-based reporting.
-- Organized the data for efficient querying and dashboard integration.
-
-### 4. Business Analysis (SQL)
-- Developed SQL queries to analyze prescription claims, healthcare spending, prescriber performance, geographic trends, opioid utilization, and beneficiary metrics.
-- Generated business KPIs and summary statistics used throughout the dashboard.
-
-### 5. Dashboard Development (Power BI)
-- Connected the processed data to Power BI.
-- Built an interactive dashboard consisting of executive KPIs, geographic analysis, prescriber performance metrics, and opioid & antibiotic insights.
-- Generated business recommendations to support data-driven healthcare decision-making.
+> The dataset contains no personally identifiable patient information (PII) and is intended for healthcare analytics and research.
 
 ---
 
-# ⚙️ Project Workflow
+# 🔄 Data Preparation
 
-```text
-Raw CMS Medicare Part D Dataset (.csv)
-                │
-                ▼
-DuckDB Extraction & Filtering
-                │
-                ▼
-Python Data Cleaning & Preprocessing
-                │
-                ▼
-Cleaned Dataset
-                │
-                ▼
-SQLite Database
-                │
-                ▼
-SQL Business Analysis
-                │
-                ▼
-Power BI Dashboard
-                │
-                ▼
-Business Insights & Recommendations
-```
+The CMS dataset was prepared through a structured ETL workflow.
+
+### Data Extraction (DuckDB)
+
+- Imported the raw CMS dataset
+- Selected relevant analytical columns
+- Filtered unnecessary attributes
+- Exported a streamlined dataset
+
+### Data Cleaning (Pandas)
+
+- Validated missing values
+- Standardized data types
+- Verified data consistency
+- Engineered analytical metrics including:
+  - `generic_rate_pct`
+  - `avg_cost_per_clm`
+  - `opioid_clms_per_bene`
+
+### CMS Privacy Suppression
+
+CMS suppresses beneficiary counts below **11** to protect patient privacy.
+
+To distinguish suppressed values from genuine zero opioid activity, an **`Opioid_Bene_Suppressed`** indicator was created during preprocessing.
 
 ---
 
-# 📊 Dashboard Overview
+# 📊 Data Model
 
-The dashboard is organized into three analytical pages.
+The cleaned dataset was organized into a **SQLite star schema** to support efficient SQL analysis and Power BI reporting.
 
-## 1️⃣ Executive Overview
+| Table | Key Columns | Description |
+|-------|-------------|-------------|
+| **fact_prescribing** | `npi`, `tot_clms`, `tot_drug_cst` | Stores prescription claims, spending, and analytical measures used for reporting. |
+| **dim_prescriber** | `npi`, `prscrbr_type`, `prscrbr_city` | Contains provider information, specialty, and location details. |
+| **dim_geography** | `prscrbr_state_abrvtn`, `state_name`, `region` | Stores geographic attributes for state-level analysis and reporting. |
 
-### Purpose
-Provides a high-level summary of nationwide prescription activity.
+The star schema minimizes redundancy while improving SQL query performance and Power BI reporting efficiency.
 
-### KPIs
+---
 
-- Total Claims
+# 📈 SQL Analysis
+
+SQL was used to analyze prescription spending, generic drug utilization, and opioid prescribing patterns to answer key business questions.
+
+## Executive KPI Analysis
+
+Calculated key healthcare metrics including:
+
+- Total Prescription Claims
 - Total Drug Spending
 - Total Beneficiaries
+- Generic Utilization Rate
+- Opioid Prescribing Rate
+
+### Prescription Spending Analysis
+
+Identified where Medicare prescription spending is concentrated by analyzing:
+
+- Highest-spending specialties
+- Highest-spending states
+- Top providers by prescription spending
+
+The analysis showed that the **top 10 of 118 medical specialties account for approximately 81.5% of total Medicare Part D prescription spending**, highlighting a strong concentration of healthcare expenditure.
+
+### Generic Drug Utilization Analysis
+
+Evaluated generic prescribing patterns across specialties and states using claims-weighted utilization rates.
+
+To improve reliability, analyses were restricted to entities with at least **50,000 prescription claims**, reducing distortions caused by low-volume specialties and territories.
+
+### Opioid Prescribing Analysis
+
+Analyzed opioid prescribing using prescribing rates rather than raw prescription counts to enable fair comparisons across specialties and states.
+
+The same **50,000-claim threshold** was applied to improve statistical reliability.
+
+
+# 📊 Power BI Dashboard
+
+The SQL analysis was transformed into an interactive **Power BI dashboard** to enable users to explore prescription spending, generic drug utilization, and opioid prescribing patterns through intuitive visualizations and business-focused insights.
+
+---
+
+### Executive Overview
+
+Provides a high-level summary of Medicare prescription activity through key performance indicators and geographic insights.
+
+**Highlights**
+
+- Total Prescription Claims
+- Total Drug Spending
+- Total Beneficiaries
+- Generic Utilization Rate
+- Opioid Prescribing Rate
+- State-wise Spending Map
+
+---
+
+### Prescriber Performance
+
+Analyzes prescribing behavior across providers and medical specialties.
+
+**Highlights**
+
+- Top Prescribers by Spending
+- Claims vs Spending Comparison
 - Average Cost per Claim
-- Generic Prescription Rate
-
-### Visualizations
-
-- Drug Spending by State
-- Top 10 Medical Specialties by Total Drug Spending
+- Specialty-wise Distribution
 
 ---
 
-## 2️⃣ Prescriber Performance
+### Generic Drug Analysis
 
-### Purpose
-Evaluates prescribing behavior at the individual provider level.
+Evaluates generic prescribing patterns across specialties and states.
 
-### KPIs
+**Highlights**
 
-- Total Prescribers
-- Average Claims per Prescriber
-- Average Spending per Prescriber
-
-### Visualizations
-
-- Top 10 Prescribers by Total Claims
-- Top 10 Prescribers by Total Drug Spending
-- Prescriber Performance Table
+- Generic Utilization by Specialty
+- Generic Utilization by State
+- Claims-weighted Generic Utilization
+- Distribution of Generic Prescribing
 
 ---
 
-## 3️⃣ Opioid & Antibiotic Analysis
+### Opioid & Antibiotic Analysis
 
-### Purpose
-Analyzes prescribing trends related to opioid and antibiotic medications.
+Provides insights into opioid prescribing behavior while accounting for differences in prescription volume.
 
-### KPIs
+**Highlights**
 
-- Total Opioid Spending
-- Total Antibiotic Spending
-- Total Opioid Claims
-- Total Antibiotic Claims
-
-### Visualizations
-
-- Top 10 States by Opioid Claims
-- Top 10 Specialties by Opioid Spending
+- Opioid Prescribing Rate by Specialty
+- Opioid Prescribing Rate by State
+- Opioid Spending Distribution
+- Antibiotic Prescription Overview
 
 ---
 
-# 📥 Power BI Dashboard
+# 💡 Key Business Insights
 
-The interactive Power BI dashboard file is available for download using the link below.
+- The **top 10 of 118 medical specialties account for approximately 81.5%** of total Medicare Part D prescription spending, demonstrating that Medicare expenditure is highly concentrated within a small group of specialties.
 
-[📊 Download Power BI Dashboard (.pbix)](https://drive.google.com/file/d/1YFI-KmvtF27b7wcNV4V7TX0pIuo14anp/view?usp=sharing)
+- The **claims-weighted generic utilization rate is approximately 84.25%**, although prescribing behavior varies across specialties and states, highlighting opportunities to improve prescribing efficiency and reduce healthcare costs.
 
-> **Note:** The Power BI dashboard is hosted externally because GitHub imposes file size limitations on large `.pbix` files. The repository contains the complete SQL analysis, project documentation, and the full analytics workflow, while the dashboard can be downloaded using the link above.
+- Evaluating opioid prescribing using **prescribing rates instead of raw prescription counts** enables fair comparisons across providers, specialties, and geographic regions.
 
----
-
-# 📈 Business Value
-
-The dashboard enables healthcare stakeholders to:
-
-- Monitor nationwide prescription activity.
-- Identify high-cost specialties and prescribers.
-- Analyze healthcare spending patterns.
-- Track opioid prescribing trends.
-- Support operational and strategic decision-making through interactive business intelligence.
-- Enable faster identification of prescribing trends through interactive visual analytics.
+- Applying a **minimum threshold of 50,000 prescription claims** improves statistical reliability by minimizing the influence of low-volume specialties and territories.
 
 ---
 
-# 📁 Repository Structure
+# 🚀 Future Improvements
 
-```text
-Pharmaceutical_Prescription_Analytics_dashboard/
-│
-├── README.md
-├── LICENSE
-├── analysis_queries.sql
-├── Business_Insights.md
-├── Dashboard_Guide.md
-└── Data_Dictionary.md
-```
+Potential enhancements include:
 
-> **Note:** The original CMS dataset, SQLite database, and Power BI dashboard file are not included in this repository because of file size limitations. The SQL analysis, project documentation, and dashboard workflow are included, while the Power BI dashboard can be downloaded using the link provided in the **Power BI Dashboard** section.
-
----
-
-# 📚 Documentation
-
-The repository includes supporting documentation to improve project understanding.
-
-- **Business_Insights.md** – Executive summary, analytical findings, and business recommendations.
-- **Dashboard_Guide.md** – Overview of dashboard pages, KPIs, and visualizations.
-- **Data_Dictionary.md** – Description of key dataset fields used throughout the project.
-
----
-
-# 🚀 Skills Demonstrated
-
-- Data Cleaning
-- Data Transformation
-- SQL Query Development
-- Relational Database Design
-- Business Intelligence
-- Interactive Dashboard Development
-- Data Visualization
-- Healthcare Analytics
-- Business Insight Generation
-- Analytical Reporting
-
----
-
-# 🔮 Future Enhancements
-
-Potential improvements include:
-
-- Time-series prescription trend analysis.
-- Predictive analytics for healthcare spending.
-- Prescriber anomaly detection using advanced analytical models.
-- Interactive drill-through reports.
-- Additional KPI benchmarking dashboards.
+- Extend the analysis to multiple years of Medicare Part D data for trend analysis.
+- Add drill-through pages, bookmarks, and advanced interactivity in Power BI.
+- Integrate additional CMS datasets to provide broader healthcare insights.
 
 ---
 
 # 👤 Author
 
 **Navneesh Gill**
-
-B.Tech Student | Business Analytics & Data Analytics
-
-### Skills
-
-DuckDB • Python • SQL • SQLite • Power BI • Data Visualization • Business Analytics
