@@ -178,6 +178,11 @@ Evaluated generic prescribing patterns across specialties and states using claim
 To improve reliability, analyses were restricted to entities with at least **50,000 prescription claims**, reducing distortions caused by low-volume specialties and territories.
 
 ### Opioid Prescribing Analysis
+The analysis included:
+
+- Opioid prescribing rate by specialty
+- Opioid prescribing rate by state
+- Opioid prescription spending
 
 Analyzed opioid prescribing using prescribing rates rather than raw prescription counts to enable fair comparisons across specialties and states.
 
